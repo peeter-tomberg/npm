@@ -1,0 +1,161 @@
+aliases:
+  default: &default
+    docker:
+      - image: circleci/node:latest
+
+  install_token: &install_token
+    run:
+      name: 'Setting up private repository NPM access'
+      command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+
+  install_deps: &install_deps
+    run:
+      name: 'Installing dependencies'
+      command: npm ci
+
+  restore_cache: &restore_cache
+    restore_cache:
+      name: 'Restoring cache'
+      keys:
+        - project-deps-v1-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "package-lock.json" }}-{{ .Revision }}
+        - project-deps-v1-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "package-lock.json" }}
+        - project-deps-v1-{{ .Environment.CIRCLE_PROJECT_REPONAME }}
+
+  save_cache: &save_cache
+    save_cache:
+      name: 'Saving cache'
+      key: project-deps-v1-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "package-lock.json" }}-{{ .Revision }}
+      paths:
+        - ~/.npm
+
+version: 2
+jobs:
+  dependencies:
+    <<: *default
+    steps:
+      - checkout
+      - *install_token
+      - *restore_cache
+      - *install_deps
+      - *save_cache
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - node_modules
+
+  build:
+    <<: *default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Building all libraries
+          command: npm run build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - packages/*/lib
+
+  lint:
+    <<: *default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run: npm run lint
+
+  test:
+    <<: *default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run: npm run test
+
+  semantic_release:
+    <<: *default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run: npx semantic-release --dry-run
+
+workflows:
+  version: 2
+  pull-request:
+    jobs:
+      - dependencies:
+          context: npm-packages
+          filters:
+            branches:
+              ignore:
+                - master
+      - build:
+          context: npm-packages
+          filters:
+            branches:
+              ignore:
+                - master
+          requires:
+            - dependencies
+      - lint:
+          context: npm-packages
+          filters:
+            branches:
+              ignore:
+                - master
+          requires:
+            - dependencies
+      - test:
+          context: npm-packages
+          filters:
+            branches:
+              ignore:
+                - master
+          requires:
+            - dependencies
+
+  build-master:
+    jobs:
+      - dependencies:
+          context: npm-packages
+          filters:
+            branches:
+              only:
+                - master
+      - build:
+          context: npm-packages
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - dependencies
+
+      - lint:
+          context: npm-packages
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - dependencies
+      - test:
+          context: npm-packages
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - dependencies
+
+      - semantic_release:
+          context: npm-packages
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
+            - lint
+            - test
