@@ -5,28 +5,13 @@ aliases:
 
   install_token: &install_token
     run:
-      name: 'Setting up private repository NPM access'
+      name: 'Setting NPM token'
       command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > $HOME/.npmrc
 
   install_deps: &install_deps
     run:
       name: 'Installing dependencies'
       command: npm ci
-
-  restore_cache: &restore_cache
-    restore_cache:
-      name: 'Restoring cache'
-      keys:
-        - project-deps-v1-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "package-lock.json" }}-{{ .Revision }}
-        - project-deps-v1-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "package-lock.json" }}
-        - project-deps-v1-{{ .Environment.CIRCLE_PROJECT_REPONAME }}
-
-  save_cache: &save_cache
-    save_cache:
-      name: 'Saving cache'
-      key: project-deps-v1-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "package-lock.json" }}-{{ .Revision }}
-      paths:
-        - ~/.npm
 
 version: 2
 jobs:
