@@ -10,6 +10,9 @@
   "files": [
     "lib/*"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "tslint -c ../../.config/tslint/tslint.json -p .config/tsconfig.project.json --fix src/**/*.{ts,tsx}"
   },
