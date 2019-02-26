@@ -9,7 +9,7 @@
     "build:watch": "tsc --build --watch",
     "test": "jest --config .config/jest/jest.config.js --verbose",
     "test:watch": "jest --config .config/jest/jest.config.js --watch --verbose",
-    "publish": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",
+    "publish": "lerna exec --concurrency 1 \"npx --no-install semantic-release -e semantic-release-monorepo\" && node -e \"require('semantic-release-monorepo-hooks').hookAfterAll()\"",
     "commitmsg": "validate-commit-msg"
   },
   "validate-commit-msg": {
