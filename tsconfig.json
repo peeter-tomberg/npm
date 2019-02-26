@@ -1,7 +1,7 @@
 {
   "files": [],
   "references": [
-    { "path": "./packages/registry/.config"},
-    { "path": "./packages/mongo-repository/.config"}
+    { "path": "./packages/registry/.config/tsconfig.project.json" },
+    { "path": "./packages/mongo-repository/.config/tsconfig.project.json" }
   ]
 }

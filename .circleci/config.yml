@@ -113,7 +113,7 @@ workflows:
               ignore:
                 - master
           requires:
-            - dependencies
+            - build
 
   build-master:
     jobs:
