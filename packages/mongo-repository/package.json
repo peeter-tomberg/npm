@@ -6,6 +6,9 @@
   "typings": "lib/mongoRepository.d.ts",
   "author": "Peeter Tomberg <peeter.tomberg@gmail.com>",
   "license": "MIT",
+  "files": [
+    "lib/*"
+  ],
   "scripts": {
     "lint": "tslint -c ../../.config/tslint/tslint.json -p .config/tsconfig.project.json --fix src/**/*.{ts,tsx}"
   },

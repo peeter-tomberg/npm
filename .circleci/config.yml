@@ -84,6 +84,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ./
+      - *install_token
       - run: npm run publish
 
 workflows:
