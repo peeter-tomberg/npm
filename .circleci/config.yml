@@ -38,7 +38,7 @@ jobs:
       - *install_deps
       - run:
           name: Installing dependencies on all packages
-          command: lerna exec -- npm ci
+          command: npx lerna exec -- npm ci
       - persist_to_workspace:
           root: ./
           paths:
