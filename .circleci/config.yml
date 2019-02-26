@@ -35,7 +35,9 @@ jobs:
     steps:
       - checkout
       - *install_token
-      - run: npx lerna bootstrap
+      - run:
+          name: Bootstrapping all packages
+          command: npx lerna bootstrap
       - persist_to_workspace:
           root: ./
           paths:
@@ -49,7 +51,10 @@ jobs:
       - attach_workspace:
           at: ./
       - run:
-          name: Building all libraries
+          name: Linking all packages together
+          command: npx lerna link
+      - run:
+          name: Building all packages
           command: npm run build
       - persist_to_workspace:
           root: ./
@@ -147,7 +152,7 @@ workflows:
               only:
                 - master
           requires:
-            - dependencies
+            - build
 
       - semantic_release:
           context: npm-packages
