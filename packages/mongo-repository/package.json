@@ -1,0 +1,15 @@
+{
+  "name": "@peetertomberg/mongo-repository",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/mongoRepository.js",
+  "typings": "lib/mongoRepository.d.ts",
+  "author": "Peeter Tomberg <peeter.tomberg@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "tslint -c ../../.config/tslint/tslint.json -p .config/tsconfig.project.json --fix src/**/*.{ts,tsx}"
+  },
+  "dependencies": {
+    "@types/mongodb": "^3.1.19"
+  }
+}

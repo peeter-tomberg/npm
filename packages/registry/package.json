@@ -1,0 +1,15 @@
+{
+  "name": "@peetertomberg/registry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/registry.js",
+  "typings": "lib/registry.d.ts",
+  "author": "Peeter Tomberg <peeter.tomberg@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "tslint -c ../../.config/tslint/tslint.json -p .config/tsconfig.project.json --fix src/**/*.{ts,tsx}"
+  },
+  "dependencies": {
+    "tiny-emitter": "2.1.0"
+  }
+}
