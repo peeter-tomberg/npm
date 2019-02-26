@@ -38,9 +38,11 @@ jobs:
       - *restore_cache
       - *install_deps
       - *save_cache
+      - run: npx lerna bootstrap
       - persist_to_workspace:
           root: ./
           paths:
+            - packages/*/node_modules
             - node_modules
 
   build:
