@@ -42,11 +42,11 @@
   "license": "MIT",
   "dependencies": {
     "@peetertomberg/mongo-repository": "file:packages/mongo-repository",
-    "@peetertomberg/registry": "file:packages/registry",
-    "validate-commit-msg": "^2.14.0"
+    "@peetertomberg/registry": "file:packages/registry"
   },
   "devDependencies": {
     "@types/jest": "24.0.6",
+    "validate-commit-msg": "2.14.0",
     "jest": "24.1.0",
     "lerna": "3.13.0",
     "semantic-release": "^15.13.3",
