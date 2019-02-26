@@ -84,7 +84,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ./
-      - run: npx semantic-release --dry-run
+      - run: npm run publish
 
 workflows:
   version: 2
