@@ -8,12 +8,13 @@
   "author": "Peeter Tomberg <peeter.tomberg@gmail.com>",
   "license": "MIT",
   "files": [
-    "lib/*"
+    "lib/*",
+    ".config/runkit.js"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "runkitExampleFilename": "./.config/example.js",
+  "runkitExampleFilename": ".config/runkit.js",
   "scripts": {
     "lint": "tslint -c ../../.config/tslint/tslint.json -p .config/tsconfig.project.json --fix src/**/*.{ts,tsx}"
   },
