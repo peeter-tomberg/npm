@@ -1,6 +1,6 @@
 {
   "name": "@peetertomberg/mongo-repository",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "lib/mongoRepository.js",
   "typings": "lib/mongoRepository.d.ts",
