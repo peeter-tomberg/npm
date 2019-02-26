@@ -35,9 +35,10 @@ jobs:
     steps:
       - checkout
       - *install_token
+      - *install_deps
       - run:
-          name: Bootstrapping all packages
-          command: npx lerna bootstrap
+          name: Installing dependencies on all packages
+          command: lerna exec -- npm ci
       - persist_to_workspace:
           root: ./
           paths:
