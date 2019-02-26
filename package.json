@@ -29,13 +29,14 @@
     "warnOnFail": false
   },
   "release": {
-    "prepare": [],
-    "publish": [
-      "@semantic-release/github",
-      "@semantic-release/npm"
-    ],
-    "analyzeCommits": {
-      "preset": "angular"
+    "monorepo": {
+      "analyzeCommits": {
+        "format": "angular"
+      },
+      "publish": [
+        "@semantic-release/github",
+        "@semantic-release/npm"
+      ]
     }
   },
   "author": "Peeter Tomberg <peeter.tomberg@gmail.com>",
