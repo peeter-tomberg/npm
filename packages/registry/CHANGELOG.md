@@ -1,3 +1,10 @@
+# [@peetertomberg/registry-v1.0.3](https://github.com/peeter-tomberg/npm.git/compare/@peetertomberg/registry-v1.0.2...@peetertomberg/registry-v1.0.3) (2019-02-27)
+
+
+### Bug Fixes
+
+* Added missing fields to package.json ([137dfbc](https://github.com/peeter-tomberg/npm.git/commit/137dfbc))
+
 # [@peetertomberg/registry-v1.0.2](https://github.com/peeter-tomberg/npm.git/compare/@peetertomberg/registry-v1.0.1...@peetertomberg/registry-v1.0.2) (2019-02-26)
 
 
