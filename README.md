@@ -4,7 +4,8 @@
 [![typescript](https://img.shields.io/badge/typescript-friendly-informational.svg)](https://www.typescriptlang.org//)
 [![semantic-release](https://img.shields.io/badge/released%20with-semantic--release-important.svg)](https://www.typescriptlang.org//)
 
-> Basically a monorepository of all my NPM projects written in typescript
+> Basically a monorepository of all my NPM projects written in typescript, each one
+> semantically released.
 
 # Scripts
 
@@ -20,4 +21,4 @@
 
 | Package                         	| Description                                                                  	| NPM                                                           	|
 |---------------------------------	|------------------------------------------------------------------------------	|---------------------------------------------------------------	|
-| [registry](packages/registry) 	| Basically a library to create a typed key-value store with an event emitter. 	| [Link](https://www.npmjs.com/package/@peetertomberg/registry) 	|
+| [registry](packages/registry) 	  | Basically a library to create a typed key-value store with an event emitter. 	| [Link](https://www.npmjs.com/package/@peetertomberg/registry) 	|
