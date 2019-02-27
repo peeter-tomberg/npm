@@ -2,7 +2,12 @@
   "name": "@peetertomberg/registry",
   "private": false,
   "version": "1.0.2",
-  "description": "",
+  "description": "Basically a library to create a typed key-value store with an event emitter.",
+  "homepage": "https://github.com/peeter-tomberg/npm/tree/master/packages/registry",
+  "repository": "github:peeter-tomberg/npm",
+  "bugs": {
+    "url": "https://github.com/peeter-tomberg/npm/issues"
+  },
   "main": "lib/registry.js",
   "typings": "lib/registry.d.ts",
   "author": "Peeter Tomberg <peeter.tomberg@gmail.com>",
